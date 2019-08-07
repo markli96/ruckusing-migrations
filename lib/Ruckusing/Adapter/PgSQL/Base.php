@@ -114,7 +114,7 @@ class Ruckusing_Adapter_PgSQL_Base extends Ruckusing_Adapter_Base implements Ruc
                 'biginteger'    => array('name' => 'bigint'),
                 'float'         => array('name' => 'float'),
                 'decimal'       => array('name' => 'decimal', 'scale' => 0, 'precision' => 10),
-                'datetime'      => array('name' => 'timestamp'),
+                'datetime'      => array('name' => 'timestamptz'),
                 'timestamp'     => array('name' => 'timestamp'),
                 'time'          => array('name' => 'time'),
                 'date'          => array('name' => 'date'),
