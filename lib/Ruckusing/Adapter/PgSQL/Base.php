@@ -1376,6 +1376,6 @@ SQL;
         throw new Ruckusing_Exception('Cant make quick foreign key. Wrong $fromColumn format. Should be tablename_id', Ruckusing_Exception::INVALID_ARGUMENT);
       }
 
-      $this->foreignKey($fromColumn, $fromColumn, substr($fromColumn, 0, $index), 'id', $onUpdate, $onDelete);
+      $this->foreignKey($fromTable, $fromColumn, substr($fromColumn, 0, $index), 'id', $onUpdate, $onDelete);
     }
   }
