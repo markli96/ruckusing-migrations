@@ -1,26 +1,25 @@
 <?php
 
-/**
- * Ruckusing
- *
- * @category  Ruckusing
- * @package   Ruckusing_Adapter
- * @author    Cody Caughlan <codycaughlan % gmail . com>
- * @link      https://github.com/ruckus/ruckusing-migrations
- */
+  /**
+   * Ruckusing
+   *
+   * @category  Ruckusing
+   * @package   Ruckusing_Adapter
+   * @author    Cody Caughlan <codycaughlan % gmail . com>
+   * @link      https://github.com/ruckus/ruckusing-migrations
+   */
 
-/**
- * Ruckusing_Adapter_Interface
- *
- * Interface of adapters
- *
- * @category Ruckusing
- * @package  Ruckusing_Adapter
- * @author   Cody Caughlan <codycaughlan % gmail . com>
- * @link      https://github.com/ruckus/ruckusing-migrations
- */
-interface Ruckusing_Adapter_Interface
-{
+  /**
+   * Ruckusing_Adapter_Interface
+   *
+   * Interface of adapters
+   *
+   * @category  Ruckusing
+   * @package   Ruckusing_Adapter
+   * @author    Cody Caughlan <codycaughlan % gmail . com>
+   * @link      https://github.com/ruckus/ruckusing-migrations
+   */
+  interface Ruckusing_Adapter_Interface {
     /**
      * get the current database name
      *
@@ -78,6 +77,7 @@ interface Ruckusing_Adapter_Interface
     public function quote_string($str);
 
     //database level operations
+
     /**
      * database exists
      *
@@ -95,7 +95,7 @@ interface Ruckusing_Adapter_Interface
      *
      * @return boolean
      */
-    public function create_table($table_name, $options = array());
+    public function create_table($table_name, $options = []);
 
     /**
      * drop database
@@ -107,6 +107,7 @@ interface Ruckusing_Adapter_Interface
     public function drop_database($db);
 
     //table level opertions
+
     /**
      * table exists ?
      *
@@ -136,6 +137,7 @@ interface Ruckusing_Adapter_Interface
     public function rename_table($name, $new_name);
 
     //column level operations
+
     /**
      * rename column
      *
@@ -157,7 +159,7 @@ interface Ruckusing_Adapter_Interface
      *
      * @return boolean
      */
-    public function add_column($table_name, $column_name, $type, $options = array());
+    public function add_column($table_name, $column_name, $type, $options = []);
 
     /**
      * remove column
@@ -179,7 +181,7 @@ interface Ruckusing_Adapter_Interface
      *
      * @return void
      */
-    public function change_column($table_name, $column_name, $type, $options = array());
+    public function change_column($table_name, $column_name, $type, $options = []);
 
     /**
      * remove index
@@ -200,7 +202,7 @@ interface Ruckusing_Adapter_Interface
      *
      * @return boolean
      */
-    public function add_index($table_name, $column_name, $options = array());
+    public function add_index($table_name, $column_name, $options = []);
 
     /**
      * add timestamps
@@ -242,4 +244,27 @@ interface Ruckusing_Adapter_Interface
      */
     public function multi_query($queries);
 
-}
+    /**
+     * @param string $fromTable
+     * @param string $fromColumn
+     * @param string $toTable
+     * @param string $toColumn
+     *
+     * @param string $onUpdate
+     * @param string $onDelete
+     *
+     * @return mixed
+     */
+    public function foreignKey($fromTable, $fromColumn, $toTable, $toColumn, $onUpdate = 'cascade', $onDelete = '');
+
+    /**
+     * @param string $fromTable
+     * @param string $fromColumn
+     * @param string $onUpdate
+     * @param string $onDelete
+     *
+     * @return mixed
+     */
+    public function quickForeignKey($fromTable, $fromColumn, $onUpdate = 'cascade', $onDelete = '');
+
+  }
