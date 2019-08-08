@@ -1,24 +1,23 @@
 <?php
 
-/**
- * Ruckusing
- *
- * @category  Ruckusing
- * @package   Ruckusing_Migration
- * @author    Cody Caughlan <codycaughlan % gmail . com>
- * @link      https://github.com/ruckus/ruckusing-migrations
- */
+  /**
+   * Ruckusing
+   *
+   * @category  Ruckusing
+   * @package   Ruckusing_Migration
+   * @author    Cody Caughlan <codycaughlan % gmail . com>
+   * @link      https://github.com/ruckus/ruckusing-migrations
+   */
 
-/**
- * Ruckusing_Migration_Base
- *
- * @category Ruckusing
- * @package  Ruckusing_Migration
- * @author   Cody Caughlan <codycaughlan % gmail . com>
- * @link      https://github.com/ruckus/ruckusing-migrations
- */
-class Ruckusing_Migration_Base
-{
+  /**
+   * Ruckusing_Migration_Base
+   *
+   * @category  Ruckusing
+   * @package   Ruckusing_Migration
+   * @author    Cody Caughlan <codycaughlan % gmail . com>
+   * @link      https://github.com/ruckus/ruckusing-migrations
+   */
+  class Ruckusing_Migration_Base {
     /**
      * adapter
      *
@@ -33,9 +32,8 @@ class Ruckusing_Migration_Base
      *
      * @return \Ruckusing_Migration_Base
      */
-    public function __construct($adapter)
-    {
-        $this->set_adapter($adapter);
+    public function __construct($adapter) {
+      $this->set_adapter($adapter);
     }
 
     /**
@@ -46,32 +44,25 @@ class Ruckusing_Migration_Base
      *
      * @throws Ruckusing_Exception
      */
-    public function __call($name, $args)
-    {
-        throw new Ruckusing_Exception(
-                'Method unknown (' . $name . ')',
-                Ruckusing_Exception::INVALID_MIGRATION_METHOD
-        );
+    public function __call($name, $args) {
+      throw new Ruckusing_Exception('Method unknown (' . $name . ')', Ruckusing_Exception::INVALID_MIGRATION_METHOD);
     }
 
     /**
      * Set an adapter
      *
      * @param Ruckusing_Adapter_Base $adapter the adapter to set
-     * @throws Ruckusing_Exception
+     *
      * @return $this
+     * @throws Ruckusing_Exception
      */
-    public function set_adapter($adapter)
-    {
-        if (!($adapter instanceof Ruckusing_Adapter_Base)) {
-            throw new Ruckusing_Exception(
-                    'Adapter must be implement Ruckusing_Adapter_Base!',
-                    Ruckusing_Exception::INVALID_ADAPTER
-            );
-        }
-        $this->_adapter = $adapter;
+    public function set_adapter($adapter) {
+      if ( !( $adapter instanceof Ruckusing_Adapter_Base ) ) {
+        throw new Ruckusing_Exception('Adapter must be implement Ruckusing_Adapter_Base!', Ruckusing_Exception::INVALID_ADAPTER);
+      }
+      $this->_adapter = $adapter;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -79,22 +70,20 @@ class Ruckusing_Migration_Base
      *
      * @return object
      */
-    public function get_adapter()
-    {
-        return $this->_adapter;
+    public function get_adapter() {
+      return $this->_adapter;
     }
 
     /**
      * Create a database
      *
-     * @param string $name    the name of the database
+     * @param string $name the name of the database
      * @param array  $options
      *
      * @return boolean
      */
-    public function create_database($name, $options = null)
-    {
-        return $this->_adapter->create_database($name, $options);
+    public function create_database($name, $options = null) {
+      return $this->_adapter->create_database($name, $options);
     }
 
     /**
@@ -104,9 +93,8 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function drop_database($name)
-    {
-        return $this->_adapter->drop_database($name);
+    public function drop_database($name) {
+      return $this->_adapter->drop_database($name);
     }
 
     /**
@@ -116,9 +104,8 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function drop_table($tbl)
-    {
-        return $this->_adapter->drop_table($tbl);
+    public function drop_table($tbl) {
+      return $this->_adapter->drop_table($tbl);
     }
 
     /**
@@ -129,9 +116,8 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function rename_table($name, $new_name)
-    {
-        return $this->_adapter->rename_table($name, $new_name);
+    public function rename_table($name, $new_name) {
+      return $this->_adapter->rename_table($name, $new_name);
     }
 
     /**
@@ -143,24 +129,22 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function rename_column($tbl_name, $column_name, $new_column_name)
-    {
-        return $this->_adapter->rename_column($tbl_name, $column_name, $new_column_name);
+    public function rename_column($tbl_name, $column_name, $new_column_name) {
+      return $this->_adapter->rename_column($tbl_name, $column_name, $new_column_name);
     }
 
     /**
      * Add a column
      *
-     * @param string $table_name the name of the table
-     * @param string $column_name the column name
-     * @param string $type the column type
+     * @param string       $table_name  the name of the table
+     * @param string       $column_name the column name
+     * @param string       $type        the column type
      * @param array|string $options
      *
      * @return boolean
      */
-    public function add_column($table_name, $column_name, $type, $options = array())
-    {
-        return $this->_adapter->add_column($table_name, $column_name, $type, $options);
+    public function add_column($table_name, $column_name, $type, $options = []) {
+      return $this->_adapter->add_column($table_name, $column_name, $type, $options);
     }
 
     /**
@@ -171,91 +155,86 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function remove_column($table_name, $column_name)
-    {
-        return $this->_adapter->remove_column($table_name, $column_name);
+    public function remove_column($table_name, $column_name) {
+      return $this->_adapter->remove_column($table_name, $column_name);
     }
 
     /**
      * Change a column
      *
-     * @param string $table_name the name of the table
-     * @param string $column_name the column name
-     * @param string $type the column type
+     * @param string       $table_name  the name of the table
+     * @param string       $column_name the column name
+     * @param string       $type        the column type
      * @param array|string $options
      *
      * @return boolean
      */
-    public function change_column($table_name, $column_name, $type, $options = array())
-    {
-        return $this->_adapter->change_column($table_name, $column_name, $type, $options);
+    public function change_column($table_name, $column_name, $type, $options = []) {
+      return $this->_adapter->change_column($table_name, $column_name, $type, $options);
     }
 
     /**
      * Add an index
      *
-     * @param string $table_name the name of the table
-     * @param string $column_name the column name
+     * @param string       $table_name  the name of the table
+     * @param string       $column_name the column name
      * @param array|string $options
      *
      * @return boolean
      */
-    public function add_index($table_name, $column_name, $options = array())
-    {
-        return $this->_adapter->add_index($table_name, $column_name, $options);
+    public function add_index($table_name, $column_name, $options = []) {
+      return $this->_adapter->add_index($table_name, $column_name, $options);
     }
 
     /**
      * Remove an index
      *
-     * @param string $table_name the name of the table
-     * @param string $column_name the column name
+     * @param string       $table_name  the name of the table
+     * @param string       $column_name the column name
      * @param array|string $options
      *
      * @return boolean
      */
-    public function remove_index($table_name, $column_name, $options = array())
-    {
-        return $this->_adapter->remove_index($table_name, $column_name, $options);
+    public function remove_index($table_name, $column_name, $options = []) {
+      return $this->_adapter->remove_index($table_name, $column_name, $options);
     }
-    
+
     /**
      * Add timestamps
      *
-     * @param string $table_name  the name of the table
+     * @param string $table_name          the name of the table
      * @param string $created_column_name Created at column name
      * @param string $updated_column_name Updated at column name
      *
      * @return boolean
      */
-    public function add_timestamps($table_name, $created_column_name = "created_at", $updated_column_name = "updated_at")
-    {
-        return $this->_adapter->add_timestamps($table_name, $created_column_name, $updated_column_name);
+    public function add_timestamps($table_name, $created_column_name = "created_at", $updated_column_name = "updated_at") {
+      return $this->_adapter->add_timestamps($table_name, $created_column_name, $updated_column_name);
     }
-    
+
     /**
      * Remove timestamps
      *
-     * @param string $table_name  the name of the table
+     * @param string $table_name          the name of the table
      * @param string $created_column_name Created at column name
      * @param string $updated_column_name Updated at column name
      *
      * @return boolean
      */
-    public function remove_timestamps($table_name, $created_column_name = "created_at", $updated_column_name = "updated_at")
-    {
-        return $this->_adapter->remove_timestamps($table_name, $created_column_name, $updated_column_name);
+    public function remove_timestamps($table_name, $created_column_name = "created_at", $updated_column_name = "updated_at") {
+      return $this->_adapter->remove_timestamps($table_name, $created_column_name, $updated_column_name);
     }
 
     /**
      * Create a table
-     * @param string $table_name the name of the table
+     *
+     * @param string       $table_name the name of the table
      * @param array|string $options
+     *
      * @return bool|Ruckusing_Adapter_MySQL_TableDefinition|Ruckusing_Adapter_PgSQL_TableDefinition|Ruckusing_Adapter_Sqlite3_TableDefinition
      */
-    public function create_table($table_name, $options = array())
-    {
-        return $this->_adapter->create_table($table_name, $options);
+    public function create_table($table_name, $options = []) {
+      return $this->_adapter->create_table($table_name, $options);
     }
 
     /**
@@ -265,9 +244,8 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function execute($query)
-    {
-        return $this->_adapter->multi_query($query);
+    public function execute($query) {
+      return $this->_adapter->multi_query($query);
     }
 
     /**
@@ -277,9 +255,8 @@ class Ruckusing_Migration_Base
      *
      * @return array
      */
-    public function select_one($sql)
-    {
-        return $this->_adapter->select_one($sql);
+    public function select_one($sql) {
+      return $this->_adapter->select_one($sql);
     }
 
     /**
@@ -289,9 +266,8 @@ class Ruckusing_Migration_Base
      *
      * @return array
      */
-    public function select_all($sql)
-    {
-        return $this->_adapter->select_all($sql);
+    public function select_all($sql) {
+      return $this->_adapter->select_all($sql);
 
     }
 
@@ -302,9 +278,8 @@ class Ruckusing_Migration_Base
      *
      * @return boolean
      */
-    public function query($sql)
-    {
-        return $this->_adapter->query($sql);
+    public function query($sql) {
+      return $this->_adapter->query($sql);
     }
 
     /**
@@ -314,22 +289,52 @@ class Ruckusing_Migration_Base
      *
      * @return string
      */
-    public function quote_string($str)
-    {
-        return $this->_adapter->quote_string($str);
+    public function quote_string($str) {
+      return $this->_adapter->quote_string($str);
     }
 
-}
+    /**
+     * Quote a string
+     *
+     * @param string $fromTable
+     * @param string $fromColumn
+     * @param string $toTable
+     * @param string $toColumn
+     * @param string $onUpdate
+     * @param string $onDelete
+     *
+     * @return string
+     * @throws Ruckusing_Exception
+     */
+    public function foreignKey($fromTable, $fromColumn, $toTable, $toColumn, $onUpdate = 'cascade', $onDelete = '') {
+      return $this->_adapter->foreignKey($fromTable, $fromColumn, $toTable, $toColumn, $onUpdate, $onDelete);
+    }
 
-/**
- * Implementation of Ruckusing_BaseMigration.
- * Fix for backward compatibility, take care of old migrations files
- * before switch to new structure
- *
- * @category Ruckusing
- * @package  Ruckusing_Migration
- * @author   (c) Cody Caughlan <codycaughlan % gmail . com>
- */
-class Ruckusing_BaseMigration extends Ruckusing_Migration_Base
-{
-}
+    /**
+     * Quote a string
+     *
+     * @param string $fromTable
+     * @param string $fromColumn
+     * @param string $onUpdate
+     * @param string $onDelete
+     *
+     * @return string
+     * @throws Ruckusing_Exception
+     */
+    public function quickForeignKey($fromTable, $fromColumn, $onUpdate = 'cascade', $onDelete = '') {
+      return $this->_adapter->quickForeignKey($fromTable, $fromColumn, $onUpdate, $onDelete);
+    }
+
+  }
+
+  /**
+   * Implementation of Ruckusing_BaseMigration.
+   * Fix for backward compatibility, take care of old migrations files
+   * before switch to new structure
+   *
+   * @category     Ruckusing
+   * @package      Ruckusing_Migration
+   * @author   (c) Cody Caughlan <codycaughlan % gmail . com>
+   */
+  class Ruckusing_BaseMigration extends Ruckusing_Migration_Base {
+  }
