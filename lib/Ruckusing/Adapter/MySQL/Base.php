@@ -1283,9 +1283,34 @@
      * @param string $onDelete
      *
      * @return mixed
+     * @throws Ruckusing_Exception
      */
     public function foreignKey($fromTable, $fromColumn, $toTable, $toColumn, $onUpdate = 'cascade', $onDelete = '') {
-      throw new RuntimeException('Not implemented');
+      if ( empty($fromTable) ) {
+        throw new Ruckusing_Exception("Missing fromTable parameter", Ruckusing_Exception::INVALID_ARGUMENT);
+      }
+      if ( empty($fromColumn) ) {
+        throw new Ruckusing_Exception("Missing fromColumn parameter", Ruckusing_Exception::INVALID_ARGUMENT);
+      }
+      if ( empty($toTable) ) {
+        throw new Ruckusing_Exception("Missing toTable parameter", Ruckusing_Exception::INVALID_ARGUMENT);
+      }
+      if ( empty($toColumn) ) {
+        throw new Ruckusing_Exception("Missing toColumn parameter", Ruckusing_Exception::INVALID_ARGUMENT);
+      }
+
+      $sql = "ALTER TABLE %s ADD FOREIGN KEY (%s) REFERENCES %s (%s) ";
+
+      if ( $onUpdate ) {
+        $sql .= ' ON UPDATE ' . $onUpdate;
+      }
+      if ( $onDelete ) {
+        $sql .= ' ON DELETE ' . $onDelete;
+      }
+
+      $sql = sprintf($sql, $this->quote_table_name($fromTable), $this->quote_column_name($fromColumn), $this->quote_table_name($toTable), $this->quote_column_name($toColumn));
+
+      return $this->execute_ddl($sql);
     }
 
     /**
@@ -1295,8 +1320,15 @@
      * @param string $onDelete
      *
      * @return mixed
+     * @throws Ruckusing_Exception
      */
     public function quickForeignKey($fromTable, $fromColumn, $onUpdate = 'cascade', $onDelete = '') {
-      throw new RuntimeException('Not implemented');
+      $index = strrpos($fromColumn, '_');
+
+      if ( $index === false ) {
+        throw new Ruckusing_Exception('Cant make quick foreign key. Wrong $fromColumn format. Should be tablename_id', Ruckusing_Exception::INVALID_ARGUMENT);
+      }
+
+      return $this->foreignKey($fromTable, $fromColumn, substr($fromColumn, 0, $index), 'id', $onUpdate, $onDelete);
     }
   }

@@ -61,7 +61,7 @@
     /**
      * Creates an instance of Ruckusing_Adapter_PgSQL_Base
      *
-     * @param array                 $dsn    The current dsn being used
+     * @param array $dsn The current dsn being used
      * @param Ruckusing_Util_Logger $logger the current logger
      *
      * @return Ruckusing_Adapter_PgSQL_Base
@@ -173,8 +173,8 @@
      * Column definition
      *
      * @param string $column_name the column name
-     * @param string $type        the type of the column
-     * @param array  $options     column options
+     * @param string $type the type of the column
+     * @param array $options column options
      *
      * @return string
      */
@@ -225,7 +225,7 @@ SQL;
      *
      * @param string $db the db name
      *
-     * @param array  $options
+     * @param array $options
      *
      * @return boolean
      */
@@ -315,7 +315,7 @@ SQL;
     /**
      * Check if a table exists
      *
-     * @param string  $tbl           the table name
+     * @param string $tbl the table name
      * @param boolean $reload_tables reload table or not
      *
      * @return boolean
@@ -456,7 +456,7 @@ SQL;
      * Create table
      *
      * @param string $table_name the table name
-     * @param array  $options    the options
+     * @param array $options the options
      *
      * @return bool|Ruckusing_Adapter_PgSQL_TableDefinition
      */
@@ -511,7 +511,7 @@ SQL;
     /**
      * Quote a string
      *
-     * @param string $value  the string
+     * @param string $value the string
      * @param string $column the column
      *
      * @return string
@@ -547,7 +547,7 @@ SQL;
      * Renames a table.
      * Also renames a table's primary key sequence if the sequence name matches the Ruckusing Migrations default.
      *
-     * @param string $name     the current table name
+     * @param string $name the current table name
      * @param string $new_name the new table name
      *
      * @return boolean
@@ -575,10 +575,10 @@ SQL;
     /**
      * Add a column
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
-     * @param string $type        the column type
-     * @param array  $options     column options
+     * @param string $type the column type
+     * @param array $options column options
      *
      * @return boolean
      * @throws Ruckusing_Exception
@@ -612,7 +612,7 @@ SQL;
     /**
      * Drop a column
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
      *
      * @return boolean
@@ -626,8 +626,8 @@ SQL;
     /**
      * Rename a column
      *
-     * @param string $table_name      the table name
-     * @param string $column_name     the column name
+     * @param string $table_name the table name
+     * @param string $column_name the column name
      * @param string $new_column_name the new column name
      *
      * @return boolean
@@ -653,10 +653,10 @@ SQL;
     /**
      * Change a column
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
-     * @param string $type        the column type
-     * @param array  $options     column options
+     * @param string $type the column type
+     * @param array $options column options
      *
      * @return boolean
      * @throws Ruckusing_Exception
@@ -699,7 +699,7 @@ SQL;
     /**
      * Change column default
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
      * @param string $default
      *
@@ -713,7 +713,7 @@ SQL;
     /**
      * Change column null
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
      * @param string $null
      * @param string $default
@@ -732,7 +732,7 @@ SQL;
     /**
      * Get a column info
      *
-     * @param string $table  the table name
+     * @param string $table the table name
      * @param string $column the column name
      *
      * @return array
@@ -777,9 +777,9 @@ SQL;
     /**
      * Add an index
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
-     * @param array  $options     index options
+     * @param array $options index options
      *
      * @return boolean
      * @throws Ruckusing_Exception
@@ -829,9 +829,9 @@ SQL;
     /**
      * Drop an index
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
-     * @param array  $options     index options
+     * @param array $options index options
      *
      * @return boolean
      * @throws Ruckusing_Exception
@@ -857,7 +857,7 @@ SQL;
     /**
      * Add timestamps
      *
-     * @param string $table_name          The table name
+     * @param string $table_name The table name
      * @param string $created_column_name Created at column name
      * @param string $updated_column_name Updated at column name
      *
@@ -882,7 +882,7 @@ SQL;
     /**
      * Remove timestamps
      *
-     * @param string $table_name          The table name
+     * @param string $table_name The table name
      * @param string $created_column_name Created at column name
      * @param string $updated_column_name Updated at column name
      *
@@ -907,9 +907,9 @@ SQL;
     /**
      * Check an index
      *
-     * @param string $table_name  the table name
+     * @param string $table_name the table name
      * @param string $column_name the column name
-     * @param array  $options     index options
+     * @param array $options index options
      *
      * @return boolean
      * @throws Ruckusing_Exception
@@ -1008,7 +1008,7 @@ SQL;
      * Convert type to sql
      *
      * @param string $type the native type
-     * @param array  $options
+     * @param array $options
      *
      * @return string
      * @throws Ruckusing_Exception
@@ -1085,8 +1085,8 @@ SQL;
     /**
      * Add column options
      *
-     * @param string  $type the native type
-     * @param array   $options
+     * @param string $type the native type
+     * @param array $options
      * @param boolean $performing_change
      *
      * @return string
@@ -1376,6 +1376,6 @@ SQL;
         throw new Ruckusing_Exception('Cant make quick foreign key. Wrong $fromColumn format. Should be tablename_id', Ruckusing_Exception::INVALID_ARGUMENT);
       }
 
-      $this->foreignKey($fromTable, $fromColumn, substr($fromColumn, 0, $index), 'id', $onUpdate, $onDelete);
+      return $this->foreignKey($fromTable, $fromColumn, substr($fromColumn, 0, $index), 'id', $onUpdate, $onDelete);
     }
   }
