@@ -97,6 +97,8 @@ class Ruckusing_FrameworkRunner
      */
     private $_showhelp = false;
 
+    protected $logger;
+
     /**
      * Creates an instance of Ruckusing_Adapters_Base
      *
